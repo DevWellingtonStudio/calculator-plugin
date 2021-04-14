@@ -2,7 +2,7 @@
 /*
 Plugin Name: Calculator Template Plugin
 Plugin URI: http://www.wpexplorer.com/wordpress-page-templates-plugin/
-Version: 1.1.0
+Version: 1.0.0
 Author: WPExplorer
 Author URI: http://www.wpexplorer.com/
 */
@@ -38,8 +38,7 @@ class CalcTemplater {
 	private function __construct() {
 
 		$this->templates = array();
-
-
+		
 		// Add a filter to the attributes metabox to inject template into the cache.
 		if ( version_compare( floatval( get_bloginfo( 'version' ) ), '4.7', '<' ) ) {
 
@@ -51,11 +50,10 @@ class CalcTemplater {
 
 		} else {
 
-			// Add a filter to the wp 4.7 version attributes metabox
+			// Add a filter to the wp 4.7+ version attributes metabox
 			add_filter(
 				'theme_page_templates', array( $this, 'add_new_template' )
 			);
-
 		}
 
 		// Add a filter to the save post to inject out template into the page cache
@@ -63,21 +61,18 @@ class CalcTemplater {
 			'wp_insert_post_data',
 			array( $this, 'register_project_templates' )
 		);
-
-
+		
 		// Add a filter to the template include to determine if the page has our
 		// template assigned and return it's path
 		add_filter(
 			'template_include',
 			array( $this, 'view_project_template')
 		);
-
-
+		
 		// Add your templates to this array.
 		$this->templates = array(
 			'calculator-template.php' => 'Calculator Template',
 		);
-
 	}
 
 	/**
@@ -117,7 +112,6 @@ class CalcTemplater {
 		wp_cache_add( $cache_key, $templates, 'themes', 1800 );
 
 		return $atts;
-
 	}
 
 	/**

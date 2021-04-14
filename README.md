@@ -1,5 +1,7 @@
 <h2>Calculator Plugin</h2>
 
+Ver: 1.0.0
+
 Developed for Home Bond Exchange Website.
 
 This plugin is for use with Sloan, a WordPress Theme. Find it here: [Sloan Theme](https://parsonshosting.com/store/wellington-studio)
